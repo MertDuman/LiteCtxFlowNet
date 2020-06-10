@@ -42,6 +42,35 @@ We use the [MPI Sintel Dataset](http://sintel.is.tue.mpg.de/) to train our netwo
 </tr>    
 </tbody></table>
 
+## Build Caffe
+- Navigate to Caffe folder, you need to modify Makefile.config based on your GPU.
+- run 'make -j8 pycaffe tools' inside the Caffe folder to build the Caffe model.
+
+## Training
+- Inside the Caffe->Data folder. You can download the sintel dataset by running download_sintel.sh.
+- We also provide a sample file_loc_abs.list file that lists all the names of the training images.
+- Edit make-lmdbs.train.sh to direct to your .list file and choose the name of the output .lmdb file name.
+- execute the above shell script.
+- Navigate to Caffe->models->New folder.
+- Modify train.prototxt file as follows:
+    - under data_param {}, modify source: to point to your _lmdb datasets.
+- Run './train.py -gpu 0 2>&1 | tee ./log.txt' to start training.
+- OR Run './train.py -gpu 0 -weights <path_to_your_caffemodel> 2>&1 | tee ./log.txt' to start training from a checkpoint.
+
+## Inference
+- Navigate to Caffe->models->trained folder.
+- Add your own caffemodel to that folder and then rename your model to "liteflownet.caffemodel".
+- Navigate to Caffe->models->Testing folder.
+- Link the build by running 'ln -s ../../build/tools bin'.
+- Modify img1_pathList falan filan onlar frame1 frame2
+- Run './test_batch.py img1_pathList.txt img2_pathList.txt results'
+
+## Notes
+- Caffe->models->new->train.prototxt is our own trained model structure.
+- Caffe->models->new->training->context_flow.caffemodel is our own trained model.
+- Caffe->models->testing->deploy.prototxt is our own structure definition for inference.
+- Caffe->models->trained->liteflownet.caffemodel is our own model but renamed as liteflownet to use for inference.
+
 ## Acknowledgement
 We were inspired and influenced by [PWC-Net](https://github.com/NVlabs/PWC-Net) and [LiteFlowNet](https://github.com/twhui/LiteFlowNet) in design and code, we thank the authors for their hard work.
 
