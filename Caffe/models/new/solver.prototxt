@@ -1,0 +1,27 @@
+# THIS IS ONLY AN EXAMPLE. YOU CAN CHANGE THE SETTINGS, IF NECESSARY.
+net: "/content/LiteFlowNet/models/new/train.prototxt"
+
+base_lr: 0.00004
+lr_policy: "multistep"
+gamma: 0.5
+
+# TRAIN Batch size: 2
+# TEST Batch size: 1
+test_iter: 80
+
+test_interval: 5000
+stepvalue: 120000
+stepvalue: 160000
+stepvalue: 200000
+stepvalue: 240000
+max_iter: 300000
+snapshot: 20000
+
+momentum: 0.9
+weight_decay: 0.0004
+display: 10
+
+snapshot_prefix: "flow"
+solver_mode: GPU
+solver_type: ADAM
+momentum2: 0.999
