@@ -1,0 +1,4 @@
+/content/LiteFlowNet/data/training/final/alley_1/frame_0001.png
+/content/LiteFlowNet/data/training/final/alley_1/frame_0002.png
+/content/LiteFlowNet/data/training/final/ambush_2/frame_0001.png
+/content/LiteFlowNet/data/training/final/ambush_2/frame_0002.png
