@@ -69,7 +69,6 @@ We use the [MPI Sintel Dataset](http://sintel.is.tue.mpg.de/) to train our netwo
 - Add your own caffemodel to that folder and then rename your model to "liteflownet.caffemodel".
 - Navigate to Caffe->models->Testing folder.
 - Link the build by running 'ln -s ../../build/tools bin'.
-- Modify img1_pathList falan filan onlar frame1 frame2
 - Run './test_batch.py <your_frame_1_folder>.txt <your_frame_2_folder>.txt results'
 
 ## Notes
