@@ -51,7 +51,10 @@ We use the [MPI Sintel Dataset](http://sintel.is.tue.mpg.de/) to train our netwo
 
 ## Build Caffe
 - Navigate to Caffe folder, you need to modify Makefile.config based on your GPU.
-- run 'make -j8 pycaffe tools' inside the Caffe folder to build the Caffe model.
+- run the following command inside the Caffe folder to build the Caffe model.
+```bash
+$ make -j8 pycaffe tools
+```
 
 ## Training
 - Navigate to the Caffe->Data folder. You can download the sintel dataset by running download_sintel.sh.
@@ -61,15 +64,28 @@ We use the [MPI Sintel Dataset](http://sintel.is.tue.mpg.de/) to train our netwo
 - Navigate to Caffe->models->New folder.
 - Modify train.prototxt file as follows:
     - under data_param {}, modify source: to point to your _lmdb datasets.
-- Run './train.py -gpu 0 2>&1 | tee ./log.txt' to start training.
-- OR Run './train.py -gpu 0 -weights <path_to_your_caffemodel> 2>&1 | tee ./log.txt' to start training from a checkpoint.
+- Run the following command to start training from scratch.
+```bash
+$ ./train.py -gpu 0 2>&1 | tee ./log.txt
+```
+- OR Run 
+```bash
+$ ./train.py -gpu 0 -weights <path_to_your_caffemodel> 2>&1 | tee ./log.txt
+```
+to start training from a checkpoint.
 
 ## Inference
 - Navigate to the Caffe->models->trained folder.
 - Add your own caffemodel to that folder and then rename your model to "liteflownet.caffemodel".
 - Navigate to Caffe->models->Testing folder.
-- Link the build by running 'ln -s ../../build/tools bin'.
-- Run './test_batch.py <your_frame_1_folder>.txt <your_frame_2_folder>.txt results'
+- Link the build by running
+```bash
+$ ln -s ../../build/tools bin
+```
+- Run
+```bash
+$ ./test_batch.py <your_frame_1_folder>.txt <your_frame_2_folder>.txt results
+```
 
 ## Notes
 - Caffe->models->new->train.prototxt is our own trained model structure.
